@@ -1,8 +1,8 @@
 <template>
-    <div class="app_layout">
-        <app-layout-header/>
-        <slot/>
-    </div>
+  <div>
+    <app-header />
+    <slot />
+  </div>
 </template>
 
 <script setup>
