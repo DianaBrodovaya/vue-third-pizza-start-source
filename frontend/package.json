@@ -28,5 +28,8 @@
     "sass": "^1.69.5",
     "vite": "^6.2.5",
     "vitest": "^0.34.6"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.63.0"
   }
 }
