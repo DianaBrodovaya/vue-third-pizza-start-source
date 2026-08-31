@@ -165,9 +165,14 @@ const ingredientItems = ingredientsJSON.map(normalizeIngredients);
 const sauceItems = saucesJSON.map(normalizeSauces);
 const sizeItems = sizesJSON.map(normalizeSize);
 
+const images = import.meta.glob("@/assets/img/**/*.{svg,png,jpg,jpeg}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
 const getImage = (image) => {
-  // https://vitejs.dev/guide/assets.html#new-url-url-import-meta-url
-  return new URL(`../assets/img/${image}`, import.meta.url).href;
+  return images[`/src/assets/img/${image}`];
 };
 </script>
 
@@ -183,7 +188,6 @@ const getImage = (image) => {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-
   width: 920px;
   margin: 0 auto;
   padding-right: 2.12%;
@@ -228,12 +232,10 @@ const getImage = (image) => {
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-top: 25px;
 
   p {
     @include b-s24-h28;
-
     margin: 0;
   }
 
@@ -245,7 +247,6 @@ const getImage = (image) => {
 
 .sheet {
   padding-top: 15px;
-
   border-radius: 8px;
   background-color: $white;
   box-shadow: $shadow-light;
@@ -260,12 +261,10 @@ const getImage = (image) => {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
   margin-top: 8px;
   padding-top: 18px;
   padding-right: 18px;
   padding-left: 18px;
-
   border-top: 1px solid rgba($green-500, 0.1);
 }
 
@@ -273,13 +272,11 @@ const getImage = (image) => {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
   width: 100%;
   margin-bottom: 14px;
 
   p {
     @include r-s16-h19;
-
     margin-top: 0;
     margin-right: 16px;
     margin-bottom: 10px;
@@ -296,7 +293,6 @@ const getImage = (image) => {
 
   p {
     @include r-s16-h19;
-
     margin-top: 0;
     margin-bottom: 16px;
   }
@@ -306,7 +302,6 @@ const getImage = (image) => {
   box-sizing: border-box;
   width: 100%;
   margin: 0;
-
   color: $black;
 
   &--big {
@@ -320,7 +315,6 @@ const getImage = (image) => {
 
 .ingredients__list {
   @include clear-list;
-
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -341,7 +335,6 @@ const getImage = (image) => {
 
 .radio {
   cursor: pointer;
-
   span {
     @include r-s16-h19;
 
@@ -351,16 +344,12 @@ const getImage = (image) => {
 
     &:before {
       @include p_center-v;
-
       display: block;
-
       box-sizing: border-box;
       width: 20px;
       height: 20px;
-
       content: "";
       transition: 0.3s;
-
       border: 1px solid $purple-400;
       border-radius: 50%;
       background-color: $white;
@@ -403,7 +392,6 @@ const getImage = (image) => {
 
 .counter {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 }
@@ -411,19 +399,14 @@ const getImage = (image) => {
 .counter__button {
   $el: &;
   $size_icon: 50%;
-
   position: relative;
-
   display: block;
-
   width: 16px;
   height: 16px;
   margin: 0;
   padding: 0;
-
   cursor: pointer;
   transition: 0.3s;
-
   border: none;
   border-radius: 50%;
   outline: none;
@@ -433,12 +416,9 @@ const getImage = (image) => {
 
     &::before {
       @include p_center-all;
-
       width: $size_icon;
       height: 2px;
-
       content: "";
-
       border-radius: 2px;
       background-color: $black;
     }
@@ -469,25 +449,19 @@ const getImage = (image) => {
 
     &::before {
       @include p_center-all;
-
       width: $size_icon;
       height: 2px;
-
       content: "";
-
       border-radius: 2px;
       background-color: $white;
     }
 
     &::after {
       @include p_center-all;
-
       width: $size_icon;
       height: 2px;
-
       content: "";
       transform: translate(-50%, -50%) rotate(90deg);
-
       border-radius: 2px;
       background-color: $white;
     }
@@ -506,7 +480,6 @@ const getImage = (image) => {
 
     &:disabled {
       cursor: default;
-
       opacity: 0.3;
     }
   }
@@ -526,14 +499,11 @@ const getImage = (image) => {
 
 .counter__input {
   @include r-s14-h16;
-
   box-sizing: border-box;
   width: 22px;
   margin: 0;
   padding: 0 3px;
-
   text-align: center;
-
   color: $black;
   border: none;
   border-radius: 10px;
@@ -547,7 +517,6 @@ const getImage = (image) => {
 
 .dough__input {
   position: relative;
-
   margin-right: 8%;
   margin-bottom: 20px;
   padding-left: 50px;
@@ -556,12 +525,9 @@ const getImage = (image) => {
 
   img {
     @include p_center-v;
-
     width: 36px;
     height: 36px;
-
     transition: 0.3s;
-
     border-radius: 50%;
   }
 
@@ -571,7 +537,6 @@ const getImage = (image) => {
 
   span {
     @include l-s11-h13;
-
     display: block;
   }
 
@@ -598,20 +563,15 @@ const getImage = (image) => {
 
   span {
     @include r-s16-h19;
-
     position: relative;
-
     padding-left: 46px;
 
     &::before {
       @include p_center_v;
-
       width: 36px;
       height: 36px;
-
       content: "";
       transition: 0.3s;
-
       border-radius: 50%;
       background-color: $green-100;
       background-image: url("@/assets/img/diameter.svg");
@@ -657,49 +617,37 @@ const getImage = (image) => {
 
 .filling {
   @include r-s14-h16;
-
   position: relative;
-
   display: block;
-
   padding-left: 36px;
 
   img {
     @include p_center-v;
-
     display: block;
-
     width: 32px;
     height: 32px;
-
     box-sizing: border-box;
     padding: 4px;
-
     border-radius: 50%;
   }
 }
 
 .button {
   $bl: &;
-
   @include b-s18-h21;
   font-family: inherit;
   display: block;
-
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
   cursor: pointer;
   transition: 0.3s;
   text-align: center;
-
   color: $white;
   border: none;
   border-radius: 8px;
   outline: none;
   box-shadow: $shadow-medium;
-
   background-color: $green-500;
 
   &:hover:not(:active):not(:disabled) {
@@ -787,12 +735,9 @@ const getImage = (image) => {
 
 .pizza {
   position: relative;
-
   display: block;
-
   box-sizing: border-box;
   width: 100%;
-
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -824,12 +769,9 @@ const getImage = (image) => {
   position: absolute;
   top: 0;
   left: 0;
-
   display: block;
-
   width: 100%;
   height: 100%;
-
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -837,23 +779,18 @@ const getImage = (image) => {
   &::before,
   &::after {
     display: none;
-
     position: absolute;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     content: "";
-
     background-image: inherit;
   }
 
   &--second {
     &::before {
       display: block;
-
       transform: rotate(45deg);
     }
   }
@@ -861,13 +798,11 @@ const getImage = (image) => {
   &--third {
     &::before {
       display: block;
-
       transform: rotate(45deg);
     }
 
     &::after {
       display: block;
-
       transform: rotate(-45deg);
     }
   }
@@ -968,30 +903,23 @@ const getImage = (image) => {
 
   span {
     @include r-s14-h16;
-
     display: block;
-
     margin-bottom: 4px;
   }
 
   input {
     @include r-s16-h19;
-
     display: block;
-
     box-sizing: border-box;
     width: 100%;
     margin: 0;
     padding: 8px 16px;
-
     transition: 0.3s;
-
     color: $black;
     border: 1px solid $purple-400;
     border-radius: 8px;
     outline: none;
     background-color: $white;
-
     font-family: inherit;
 
     &:focus {
@@ -1011,9 +939,7 @@ const getImage = (image) => {
 
     span {
       @include b-s16-h19;
-
       margin-right: 16px;
-
       white-space: nowrap;
     }
   }
