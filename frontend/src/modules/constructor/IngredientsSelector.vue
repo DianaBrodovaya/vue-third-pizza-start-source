@@ -65,6 +65,7 @@ const props = defineProps({
     default: () => [],
   },
 });
+
 const emit = defineEmits(["update"]);
 const values = toRef(props, "values");
 
@@ -88,8 +89,14 @@ const inputValue = (ingredient, count) => {
   return setValue(ingredient, Math.min(MAX_INGREDIENT_COUNT, Number(count)));
 };
 
+const images = import.meta.glob("@/assets/img/**/*.{svg,png,jpg,jpeg}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
 const getImage = (image) => {
-  return new URL(`../../assets/img/${image}`, import.meta.url).href;
+  return images[`/src/assets/img/${image}`];
 };
 </script>
 
