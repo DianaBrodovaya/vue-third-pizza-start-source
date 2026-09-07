@@ -85,9 +85,8 @@ const incrementValue = (ingredient) => {
   setValue(ingredient, getValue(ingredient) + 1);
 };
 
-const inputValue = (ingredient, count) => {
-  return setValue(ingredient, Math.min(MAX_INGREDIENT_COUNT, Number(count)));
-};
+const inputValue = (ingredient, count) => 
+  setValue(ingredient, Math.min(MAX_INGREDIENT_COUNT, Number(count)));
 
 const images = import.meta.glob("@/assets/img/**/*.{svg,png,jpg,jpeg}", {
   eager: true,
@@ -95,9 +94,9 @@ const images = import.meta.glob("@/assets/img/**/*.{svg,png,jpg,jpeg}", {
   import: "default",
 });
 
-const getImage = (image) => {
-  return images[`/src/assets/img/${image}`];
-};
+const getImage = (image) => 
+  images[`/src/assets/img/${image}`];
+
 </script>
 
 <style lang="scss" scoped>
