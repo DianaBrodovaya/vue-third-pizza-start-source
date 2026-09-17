@@ -4,7 +4,7 @@
       type="button"
       class="counter__button counter__button--minus"
       :disabled="value === min"
-      @click="emit('input', value - 1)"
+      @click="emit('input', --value)"
     >
       <span class="visually-hidden">Меньше</span>
     </button>
@@ -20,7 +20,7 @@
       class="counter__button counter__button--plus"
       :class="{ 'counter__button--orange': accent }"
       :disabled="value === max"
-      @click="emit('input', value + 1)"
+      @click="emit('input', ++value)"
     >
       <span class="visually-hidden">Больше</span>
     </button>
