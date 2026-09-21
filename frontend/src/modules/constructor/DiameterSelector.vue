@@ -2,20 +2,21 @@
   <div class="content__diameter">
     <div class="sheet">
       <h2 class="title title--small sheet__title">Выберите размер</h2>
+
       <div class="sheet__content">
         <label
           v-for="sizeType in items"
           :key="sizeType.id"
           class="diameter__input"
-          :class="`diameter__input--${sizeType.value}`"
+          :class="`diameter__input--${sizeType.id}`"
         >
           <input
             type="radio"
             name="diameter"
-            :value="sizeType.value"
-            :checked="sizeType.value === modelValue"
+            :value="sizeType.id"
+            :checked="sizeType.id === modelValue"
             class="visually-hidden"
-            @input="emit('update:modelValue', sizeType.value)"
+            @input="emit('update:modelValue', sizeType.id)"
           />
           <span>{{ sizeType.name }}</span>
         </label>
@@ -27,8 +28,8 @@
 <script setup>
 defineProps({
   modelValue: {
-    type: String,
-    default: "",
+    type: Number,
+    required: true,
   },
   items: {
     type: Array,
@@ -60,6 +61,7 @@ const emit = defineEmits(["update:modelValue"]);
     @include r-s16-h19;
     position: relative;
     padding-left: 46px;
+
     &::before {
       @include p_center_v;
       width: 36px;
@@ -77,7 +79,7 @@ const emit = defineEmits(["update:modelValue"]);
   &:nth-child(3n) {
     margin-right: 0;
   }
-   
+
   &--small {
     span::before {
       background-size: 18px;
