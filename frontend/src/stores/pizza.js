@@ -46,5 +46,69 @@ export const usePizzaStore = defineStore("pizza", {
       return ingredientsQuantity(state);
     },
   },
-  actions: {}
+  actions: {
+    setIndex(index) {
+      this.index = index;
+    },
+    setName(name) {
+      this.name = name;
+    },
+    setSauce(sauceId) {
+      this.sauceId = sauceId;
+    },
+    setDough(doughId) {
+      this.doughId = doughId;
+    },
+    setSize(sizeId) {
+      this.sizeId = sizeId;
+    },
+    setIngredients(ingredients) {
+      this.ingredients = ingredients;
+    },
+    addIngredient(ingredientId) {
+      this.ingredients.push({
+        ingredientId,
+        quantity: 1,
+      });
+    },
+    incrementIngredientQuantity(ingredientId) {
+      const ingredientIdx = this.ingredients.findIndex(
+        (item) => item.ingredientId === ingredientId
+      );
+
+      if (ingredientIdx === -1) {
+        this.addIngredient(ingredientId);
+        return;
+      }
+
+      this.ingredients[ingredientIdx].quantity++;
+    },
+    setIngredientQuantity(ingredientId, count) {
+      const ingredientIdx = this.ingredients.findIndex(
+        (item) => item.ingredientId === ingredientId
+      );
+
+      if (ingredientIdx === -1 && count > 0) {
+        this.addIngredient(ingredientId);
+        return;
+      } else if (ingredientIdx === -1) {
+        return;
+      }
+
+      if (count === 0) {
+        this.ingredients.splice(ingredientIdx, 1);
+        return;
+      }
+
+      this.ingredients[ingredientIdx].quantity = count;
+    },
+    loadPizza(pizza) {
+      this.index = pizza.index;
+      this.name = pizza.name;
+      this.sauceId = pizza.sauceId;
+      this.doughId = pizza.doughId;
+      this.sizeId = pizza.sizeId;
+      this.ingredients = pizza.ingredients;
+    },
+  },
 });
