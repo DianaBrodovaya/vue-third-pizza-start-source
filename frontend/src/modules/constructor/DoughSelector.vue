@@ -2,6 +2,7 @@
   <div class="content__dough">
     <div class="sheet">
       <h2 class="title title--small sheet__title">Выберите тесто</h2>
+
       <div class="sheet__content">
         <label
           v-for="doughType in items"
@@ -11,12 +12,13 @@
           <input
             type="radio"
             name="dough"
-            :value="doughType.value"
-            :checked="doughType.value === modelValue"
+            :value="doughType.id"
+            :checked="doughType.id === modelValue"
             class="visually-hidden"
-            @input="emit('update:modelValue', doughType.value)"
+            @input="emit('update:modelValue', doughType.id)"
           />
           <img :src="getImage(doughType.image)" :alt="doughType.name" />
+
           <b>{{ doughType.name }}</b>
           <span>{{ doughType.description }}</span>
         </label>
@@ -28,8 +30,8 @@
 <script setup>
 defineProps({
   modelValue: {
-    type: String,
-    default: "",
+    type: Number,
+    required: true,
   },
   items: {
     type: Array,
@@ -69,16 +71,16 @@ const getImage = (image) => {
     transition: 0.3s;
     border-radius: 50%;
   }
-  
+
   b {
     @include r-s16-h19;
   }
-  
+
   span {
     @include l-s11-h13;
     display: block;
   }
-  
+
   &:hover {
     img {
       box-shadow: $shadow-regular;
