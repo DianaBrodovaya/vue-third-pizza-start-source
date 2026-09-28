@@ -70,7 +70,7 @@ const emit = defineEmits(["update:modelValue"]);
       transition: 0.3s;
       border-radius: 50%;
       background-color: $green-100;
-      background-image: url("@/assets/img/diameter.svg");
+      background-image: url("/api/public/img/diameter.svg");
       background-repeat: no-repeat;
       background-position: center;
     }

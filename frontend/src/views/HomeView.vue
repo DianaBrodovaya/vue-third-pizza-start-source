@@ -1,5 +1,5 @@
 <template>
-  <main class="content">
+  <main v-if="dataStore.isDataLoaded" class="content">
     <form action="#" method="post">
       <div class="content__wrapper">
         <h1 class="title title--big">Конструктор пиццы</h1>
@@ -38,7 +38,7 @@
           </label>
 
           <pizza-constructor
-            :dough="pizzaStore.dough.value"
+            :dough="pizzaStore.dough.value" 
             :sauce="pizzaStore.sauce.value"
             :ingredients="pizzaStore.ingredientsExtended"
             @drop="pizzaStore.incrementIngredientQuantity"
@@ -127,9 +127,13 @@ const addToCart = async () => {
 
 const resetPizza = () => {
   pizzaStore.setName("");
-  pizzaStore.setDough(dataStore.doughs[0].id);
-  pizzaStore.setSize(dataStore.sizes[0].id);
-  pizzaStore.setSauce(dataStore.sauces[0].id);
+
+  if (dataStore.isDataLoaded) {
+    pizzaStore.setDough(dataStore.doughs[0].id);
+    pizzaStore.setSize(dataStore.sizes[0].id);
+    pizzaStore.setSauce(dataStore.sauces[0].id);
+  }
+
   pizzaStore.setIngredients([]);
   pizzaStore.setIndex(null);
 };
