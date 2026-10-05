@@ -21,7 +21,7 @@
           >
             <div class="product cart-list__product">
               <img
-                :src="getPublicImage('/public/img/product.svg')"
+                :src="getPublicImage('product.svg')"
                 class="product__img"
                 width="56"
                 height="56"

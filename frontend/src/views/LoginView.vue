@@ -6,7 +6,7 @@
     <div class="sign-form__title">
       <h1 class="title title--small">Авторизуйтесь на сайте</h1>
     </div>
-    <form method="post" @submit.prevent="login">
+    <form @submit.prevent="login">
       <div class="sign-form__input">
         <label class="input">
           <span>E-mail</span>

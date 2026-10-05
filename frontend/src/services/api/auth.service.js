@@ -10,7 +10,7 @@ export class AuthService extends ApiService {
   setAuthHeader(token) {
     axios.defaults.headers.common["Authorization"] = token
       ? `Bearer ${token}`
-      : "";
+      : "null";
   }
 
   login(params) {

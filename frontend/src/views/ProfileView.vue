@@ -23,7 +23,7 @@
       v-for="(address, index) in profileStore.addresses"
       :key="address.id"
       :address="address"
-      :index="index + 1"
+      :index="index++"
       @delete="profileStore.removeAddress(address.id)"
       @save="updateAddress(address, $event)"
     />
@@ -33,7 +33,7 @@
     <button
       type="button"
       class="button button--border"
-      @click="isNewAddressFormOpened = true"
+      @click="openNewAddressForm"
     >
       Добавить новый адрес
     </button>
@@ -43,7 +43,7 @@
     <address-edit-form
       title="Новый адрес"
       @save="addAddress"
-      @delete="isNewAddressFormOpened = false"
+      @delete="closeNewAddressForm"
     />
   </div>
 </template>
@@ -60,6 +60,14 @@ const authStore = useAuthStore();
 const profileStore = useProfileStore();
 
 const isNewAddressFormOpened = ref(false);
+
+const openNewAddressForm = () => {
+  isNewAddressFormOpened.value = true;
+};
+
+const closeNewAddressForm = () => {
+  isNewAddressFormOpened.value = false;
+};
 
 const addAddress = async (address) => {
   await profileStore.addAddress(address);

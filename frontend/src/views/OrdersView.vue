@@ -14,7 +14,7 @@
       </div>
 
       <div class="order__sum">
-        <span>Сумма заказа: {{ order.total }} ₽</span>
+        <span>Сумма заказа: {{ order.total ? order.total : 0 }} ₽</span>
       </div>
 
       <div class="order__button">
@@ -41,7 +41,7 @@
       >
         <div class="product">
           <img
-            :src="getPublicImage('/public/img/product.svg')"
+            :src="getPublicImage('product.svg')"
             class="product__img"
             width="56"
             height="56"
@@ -53,8 +53,7 @@
               <li>{{ pizza.size.name }}, {{ pizza.dough.name }} тесто</li>
               <li>Соус: {{ pizza.sauce.name }}</li>
               <li>
-                Начинка:
-                {{ pizza.ingredients.map((i) => i.name).join(", ") }}
+                Начинка: {{ ingredientsList }}
               </li>
             </ul>
           </div>
@@ -88,6 +87,7 @@ import { useProfileStore } from "@/stores/profile";
 import { useCartStore } from "@/stores/cart";
 import { useRouter } from "vue-router";
 import { getPublicImage } from "@/common/helpers/public-image";
+import { computed } from 'vue';
 
 const cartStore = useCartStore();
 const profileStore = useProfileStore();
@@ -97,6 +97,10 @@ const loadOrder = (order) => {
   cartStore.load(order);
   router.push({ name: "cart" });
 };
+
+const ingredientsList = computed(() => {
+  return pizza.ingredients ? pizza.ingredients.map(i => i.name).join(", ") : "";
+});
 </script>
 
 <style lang="scss" scoped>
