@@ -13,9 +13,9 @@
           :draggable="values[ingredient.id] < MAX_INGREDIENT_COUNT"
         >
           <div class="filling">
-            <img 
-              :src="getImage(ingredient.image)" 
-              :alt="ingredient.name" 
+            <img
+              :src="getPublicImage(ingredient.image)"
+              :alt="ingredient.name"
             />
             {{ ingredient.name }}
           </div>
@@ -37,6 +37,7 @@
 import AppDrag from "@/common/components/AppDrag.vue";
 import { MAX_INGREDIENT_COUNT } from "@/common/constants";
 import AppCounter from "@/common/components/AppCounter.vue";
+import { getPublicImage } from "@/common/helpers/public-image";
 
 defineProps({
   values: {
@@ -58,14 +59,6 @@ const setValue = (ingredient, count) => {
 const inputValue = (ingredient, count) => {
   setValue(ingredient, Math.min(MAX_INGREDIENT_COUNT, Number(count)));
 };
-
-const images = import.meta.glob("@/assets/img/**/*.{svg,png,jpg,jpeg}", {
-  eager: true,
-  query: "?url",
-  import: "default",
-});
-const getImage = (image) => 
-  images[`/src/assets/img/${image}`];
 </script>
 
 <style lang="scss" scoped>
