@@ -118,7 +118,7 @@ export const useCartStore = defineStore("cart", {
       this.address.flat = flat;
     },
     setComment(comment) {
-      this.address.street = comment;
+      this.address.comment = comment;
     },
     reset() {
       this.phone = "";
