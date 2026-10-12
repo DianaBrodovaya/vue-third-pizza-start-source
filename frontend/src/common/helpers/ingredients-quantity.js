@@ -1,4 +1,4 @@
-import { useDataStore } from "@/stores/data";
+import { useDataStore } from "@/stores/data;
 
 export const ingredientsQuantity = (pizza) => {
   const data = useDataStore();
