@@ -1,5 +1,5 @@
 import { createPinia, setActivePinia } from "pinia";
-import { beforeEach, describe, expect, it} from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import { useCartStore } from "@/stores/cart";
 import { prepareData } from "../helpers/prepare-data";
 
