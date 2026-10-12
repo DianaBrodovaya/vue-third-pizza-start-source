@@ -11,7 +11,7 @@ describe("Test app counter", () => {
     });
 
     await wrapper.get(".counter__button--plus").trigger("click");
-    
+
     expect(wrapper.emitted().input[0]).toEqual([2]);
   });
 
@@ -36,7 +36,7 @@ describe("Test app counter", () => {
     });
 
     await wrapper.get(".counter__button--minus").trigger("click");
-    
+
     expect(wrapper.emitted().input[0]).toEqual([1]);
   });
 
@@ -56,11 +56,11 @@ describe("Test app counter", () => {
   //3.РУЧНОЙ ВВОД В ИНПУТ
   it("Should emit input event when typed into input field", async () => {
     const wrapper = mount(AppCounter, {
-      props: { value: 1, min: 0, max: 3  },
+      props: { value: 1, min: 0, max: 3 },
     });
 
     const input = wrapper.get(".counter__input");
-    
+
     await input.setValue("3");
 
     expect(wrapper.emitted().input[0]).toEqual([3]);
@@ -72,7 +72,7 @@ describe("Test app counter", () => {
     const wrapper = mount(AppCounter, {
       props: { value: 0, min: 0, max: 3 },
     });
-    
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
@@ -81,7 +81,7 @@ describe("Test app counter", () => {
     const wrapper = mount(AppCounter, {
       props: { value: 1, min: 0, max: 3, accent: true },
     });
-    
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

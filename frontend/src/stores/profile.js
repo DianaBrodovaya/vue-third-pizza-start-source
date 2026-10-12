@@ -24,7 +24,7 @@ export const useProfileStore = defineStore("profile", {
             ingredients: pizza.ingredients.map((ingredient) => {
               return {
                 ...data.ingredients.find(
-                  (i) => i.id === ingredient.ingredientId
+                  (i) => i.id === ingredient.ingredientId,
                 ),
                 quantity: ingredient.quantity,
               };
@@ -103,7 +103,7 @@ export const useProfileStore = defineStore("profile", {
       const res = await resources.address.updateAddress(address);
       if (res.__state === "success") {
         this.addresses = this.addresses.map((i) =>
-          i.id === address.id ? address : i
+          i.id === address.id ? address : i,
         );
       }
     },

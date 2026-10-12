@@ -1,10 +1,7 @@
 import { createPinia, setActivePinia } from "pinia";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it} from "vitest";
 import { useCartStore } from "@/stores/cart";
-import { useDataStore } from "@/stores/data";
-import { useAuthStore } from "@/stores/auth";
 import { prepareData } from "../helpers/prepare-data";
-import resources from "@/services/resources";
 
 describe("Test cart store", () => {
   let cartStore;
@@ -13,12 +10,12 @@ describe("Test cart store", () => {
     name: "Test pizza",
     sauceId: 1,
     doughId: 1,
-    sizeId: 1, 
+    sizeId: 1,
     ingredients: [
-      { ingredientId: 1, quantity: 1 }, 
-      { ingredientId: 3, quantity: 2 }, 
+      { ingredientId: 1, quantity: 1 },
+      { ingredientId: 3, quantity: 2 },
     ],
-  }; 
+  };
 
   beforeEach(() => {
     setActivePinia(createPinia());
@@ -48,9 +45,9 @@ describe("Test cart store", () => {
     //1.3.Обогащение данных пиццы информацией из базы данных
     it("Should extend pizza data with entities from data store", () => {
       cartStore.pizzas = [{ quantity: 1, ...mockPizza }];
-      
+
       const extendedPizza = cartStore.pizzasExtended[0];
-      
+
       expect(extendedPizza.name).toBe("Test pizza");
       expect(extendedPizza.dough).toBeDefined();
       expect(extendedPizza.sauce).toBeDefined();
@@ -61,7 +58,7 @@ describe("Test cart store", () => {
     //1.4.Мапинг всех доступных товаров в miscExtended
     it("Should map all misc items from data store inside miscExtended", () => {
       cartStore.misc = [{ miscId: 1, quantity: 2 }];
-      
+
       const extendedMisc = cartStore.miscExtended;
       const firstItem = extendedMisc.find((item) => item.id === 1);
       const secondItem = extendedMisc.find((item) => item.id === 2);
@@ -76,7 +73,11 @@ describe("Test cart store", () => {
   describe("Cart Management Actions", () => {
     //2.1.Добавление новой пиццы (index: null)
     it("Should add a new pizza when index is null", () => {
-      cartStore.savePizza({ index: null, ...mockPizza, name: "Brand New Pizza" });
+      cartStore.savePizza({
+        index: null,
+        ...mockPizza,
+        name: "Brand New Pizza",
+      });
 
       expect(cartStore.pizzas.length).toBe(1);
       expect(cartStore.pizzas[0].name).toBe("Brand New Pizza");
@@ -85,7 +86,9 @@ describe("Test cart store", () => {
 
     //2.2.Редактирование существующей пиццы с сохранением количества
     it("Should update existing pizza and keep its current quantity", () => {
-      cartStore.pizzas = [{ quantity: 3, ...mockPizza, name: "Original Pizza" }];
+      cartStore.pizzas = [
+        { quantity: 3, ...mockPizza, name: "Original Pizza" },
+      ];
 
       cartStore.savePizza({ index: 0, ...mockPizza, name: "Modified Pizza" });
 
@@ -97,19 +100,19 @@ describe("Test cart store", () => {
     //2.3.Прямое изменение количества пиццы
     it("Should change pizza quantity via setPizzaQuantity", () => {
       cartStore.pizzas = [{ quantity: 1, ...mockPizza }];
-      
+
       cartStore.setPizzaQuantity(0, 5);
-      
+
       expect(cartStore.pizzas[0].quantity).toBe(5);
     });
 
     //2.4.Добавление нового дополнительного товара
     it("Should add a new misc item with quantity 1 when not present", () => {
-      cartStore.setMiscQuantity(1, 4); 
+      cartStore.setMiscQuantity(1, 4);
 
       expect(cartStore.misc.length).toBe(1);
       expect(cartStore.misc[0].miscId).toBe(1);
-      expect(cartStore.misc[0].quantity).toBe(1); 
+      expect(cartStore.misc[0].quantity).toBe(1);
     });
 
     //2.5.Полное удаление дополнительного товара из корзины при количестве 0
@@ -124,7 +127,12 @@ describe("Test cart store", () => {
     //2.6.Полный сброс корзины
     it("Should reset store state to initial values", () => {
       cartStore.phone = "123456";
-      cartStore.address = { street: "Test", building: "1", flat: "2", comment: "Call" };
+      cartStore.address = {
+        street: "Test",
+        building: "1",
+        flat: "2",
+        comment: "Call",
+      };
       cartStore.pizzas = [{ quantity: 1 }];
       cartStore.misc = [{ miscId: 1 }];
 

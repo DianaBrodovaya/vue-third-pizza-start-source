@@ -15,9 +15,9 @@ describe("Test pizza price", () => {
       name: "Test pizza",
       sauceId: 1,
       doughId: 1,
-      sizeId: 1, 
+      sizeId: 1,
       ingredients: [
-        { ingredientId: 1, quantity: 1 }, 
+        { ingredientId: 1, quantity: 1 },
         { ingredientId: 3, quantity: 2 },
       ],
     };
@@ -30,11 +30,9 @@ describe("Test pizza price", () => {
     const pizza = {
       name: "Large pizza",
       sauceId: 1,
-      doughId: 1, 
+      doughId: 1,
       sizeId: 2,
-      ingredients: [
-        { ingredientId: 1, quantity: 1 },
-      ],
+      ingredients: [{ ingredientId: 1, quantity: 1 }],
     };
 
     expect(pizzaPrice(pizza)).toBe(766);
@@ -45,7 +43,7 @@ describe("Test pizza price", () => {
     const pizza = {
       name: "Only Crust and Sauce",
       sauceId: 1,
-      doughId: 1, 
+      doughId: 1,
       sizeId: 1,
       ingredients: [],
     };
@@ -65,7 +63,7 @@ describe("Test pizza price", () => {
         { ingredientId: 3, quantity: 2 },
       ],
     };
- 
+
     expect(pizzaPrice(pizza)).toBe(434);
   });
 
@@ -74,7 +72,7 @@ describe("Test pizza price", () => {
     const pizza = {
       name: "Undefined ingredients pizza",
       sauceId: 1,
-      doughId: 1, 
+      doughId: 1,
       sizeId: 1,
     };
 

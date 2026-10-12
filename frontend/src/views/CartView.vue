@@ -206,7 +206,7 @@ const deliveryAddress = computed(() => {
   } else {
     return (
       profileStore.addresses.find(
-        (a) => a.id === Number(deliveryOption.value)
+        (a) => a.id === Number(deliveryOption.value),
       ) ?? null
     );
   }

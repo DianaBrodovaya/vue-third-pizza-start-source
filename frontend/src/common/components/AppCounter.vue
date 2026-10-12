@@ -4,7 +4,7 @@
       type="button"
       class="counter__button counter__button--minus"
       :disabled="value === min"
-      @click="emit('input', --value)"
+      @click="emit('input', value - 1)"
     >
       <span class="visually-hidden">Меньше</span>
     </button>
@@ -20,7 +20,7 @@
       class="counter__button counter__button--plus"
       :class="{ 'counter__button--orange': accent }"
       :disabled="value === max"
-      @click="emit('input', ++value)"
+      @click="emit('input', value + 1)"
     >
       <span class="visually-hidden">Больше</span>
     </button>
@@ -119,7 +119,7 @@ const emit = defineEmits(["input"]);
       border-radius: 2px;
       background-color: $white;
     }
-  
+
     &::after {
       @include p_center-all;
       width: $size_icon;
@@ -129,19 +129,19 @@ const emit = defineEmits(["input"]);
       border-radius: 2px;
       background-color: $white;
     }
-  
+
     &:hover:not(:active):not(:disabled) {
       background-color: $green-400;
     }
-  
+
     &:active:not(:disabled) {
       background-color: $green-600;
     }
-  
+
     &:focus:not(:disabled) {
       box-shadow: $shadow-regular;
     }
-  
+
     &:disabled {
       cursor: default;
       opacity: 0.3;

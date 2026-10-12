@@ -8,6 +8,6 @@ export const getPublicImage = (path) => {
 
   const publicUrl = "/api/public/img";
   const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-  
+
   return `${publicUrl}/${cleanPath}`;
 };

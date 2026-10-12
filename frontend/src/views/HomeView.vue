@@ -38,7 +38,7 @@
           </label>
 
           <pizza-constructor
-            :dough="pizzaStore.dough.value" 
+            :dough="pizzaStore.dough.value"
             :sauce="pizzaStore.sauce.value"
             :ingredients="pizzaStore.ingredientsExtended"
             @drop="pizzaStore.incrementIngredientQuantity"
