@@ -92,7 +92,7 @@ watch(password, watchField("password"));
 const login = async () => {
   const isValid = validateFields(
     { email: email.value, password: password.value },
-    validations.value
+    validations.value,
   );
 
   if (!isValid) {

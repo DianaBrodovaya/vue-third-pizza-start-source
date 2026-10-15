@@ -27,6 +27,6 @@ import { useAuthStore } from "@/stores/auth";
 const authStore = useAuthStore();
 
 const redirectRouteName = computed(() =>
-  authStore.isAuthenticated ? "orders" : "home"
+  authStore.isAuthenticated ? "orders" : "home",
 );
 </script>

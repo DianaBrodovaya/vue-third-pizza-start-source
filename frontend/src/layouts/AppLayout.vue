@@ -17,15 +17,18 @@ watch(
   async (meta) => {
     try {
       if (meta.layout) {
-        const component = await import(`./${meta.layout}.vue`)
-        layout.value = component?.default || AppLayoutDefault
+        const component = await import(`./${meta.layout}.vue`);
+        layout.value = component?.default || AppLayoutDefault;
       } else {
-        layout.value = AppLayoutDefault
+        layout.value = AppLayoutDefault;
       }
     } catch (e) {
-      console.error('Динамический шаблон не найден. Установлен шаблон по-умолчанию.', e)
-      layout.value = AppLayoutDefault
+      console.error(
+        "Динамический шаблон не найден. Установлен шаблон по-умолчанию.",
+        e,
+      );
+      layout.value = AppLayoutDefault;
     }
-  }
+  },
 );
 </script>

@@ -22,7 +22,7 @@ export const useCartStore = defineStore("cart", {
 
       return state.pizzas.map((pizza) => {
         const pizzaIngredientsIds = pizza.ingredients.map(
-          (i) => i.ingredientId
+          (i) => i.ingredientId,
         );
 
         return {
@@ -32,7 +32,7 @@ export const useCartStore = defineStore("cart", {
           size: data.sizes.find((i) => i.id === pizza.sizeId),
           sauce: data.sauces.find((i) => i.id === pizza.sauceId),
           ingredients: data.ingredients.filter((i) =>
-            pizzaIngredientsIds.includes(i.id)
+            pizzaIngredientsIds.includes(i.id),
           ),
           price: pizzaPrice(pizza),
         };
@@ -118,7 +118,7 @@ export const useCartStore = defineStore("cart", {
       this.address.flat = flat;
     },
     setComment(comment) {
-      this.address.street = comment;
+      this.address.comment = comment;
     },
     reset() {
       this.phone = "";

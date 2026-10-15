@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test AddressCard snapshots > Should NOT render address-edit-form in display mode 1`] = `
+"<div data-v-46ea6d9b=\\"\\" class=\\"sheet address-form\\">
+  <div data-v-46ea6d9b=\\"\\" class=\\"address-form__header\\"><b data-v-46ea6d9b=\\"\\">Дом</b>
+    <div data-v-46ea6d9b=\\"\\" class=\\"address-form__edit\\"><button data-v-46ea6d9b=\\"\\" type=\\"button\\" class=\\"icon\\"><span data-v-46ea6d9b=\\"\\" class=\\"visually-hidden\\"> Изменить адрес </span></button></div>
+  </div>
+  <p data-v-46ea6d9b=\\"\\">Дом</p><small data-v-46ea6d9b=\\"\\">Вход под арку, третий подъезд</small>
+</div>"
+`;
+
+exports[`Test AddressCard snapshots > Should match snapshot in display mode 1`] = `
+"<div data-v-46ea6d9b=\\"\\" class=\\"sheet address-form\\">
+  <div data-v-46ea6d9b=\\"\\" class=\\"address-form__header\\"><b data-v-46ea6d9b=\\"\\">Дом</b>
+    <div data-v-46ea6d9b=\\"\\" class=\\"address-form__edit\\"><button data-v-46ea6d9b=\\"\\" type=\\"button\\" class=\\"icon\\"><span data-v-46ea6d9b=\\"\\" class=\\"visually-hidden\\"> Изменить адрес </span></button></div>
+  </div>
+  <p data-v-46ea6d9b=\\"\\">Дом</p><small data-v-46ea6d9b=\\"\\">Вход под арку, третий подъезд</small>
+</div>"
+`;
+
+exports[`Test AddressCard snapshots > Should match snapshot in edit mode 1`] = `"<address-edit-form-stub data-v-46ea6d9b=\\"\\" title=\\"Адрес 1\\" address=\\"[object Object]\\"></address-edit-form-stub>"`;

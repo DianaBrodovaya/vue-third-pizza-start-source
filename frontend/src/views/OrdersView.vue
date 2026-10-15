@@ -52,9 +52,7 @@
             <ul>
               <li>{{ pizza.size.name }}, {{ pizza.dough.name }} тесто</li>
               <li>Соус: {{ pizza.sauce.name }}</li>
-              <li>
-                Начинка: {{ ingredientsList }}
-              </li>
+              <li>Начинка: {{ getIngredientsList(pizza) }}</li>
             </ul>
           </div>
         </div>
@@ -87,7 +85,6 @@ import { useProfileStore } from "@/stores/profile";
 import { useCartStore } from "@/stores/cart";
 import { useRouter } from "vue-router";
 import { getPublicImage } from "@/common/helpers/public-image";
-import { computed } from 'vue';
 
 const cartStore = useCartStore();
 const profileStore = useProfileStore();
@@ -98,9 +95,11 @@ const loadOrder = (order) => {
   router.push({ name: "cart" });
 };
 
-const ingredientsList = computed(() => {
-  return pizza.ingredients ? pizza.ingredients.map(i => i.name).join(", ") : "";
-});
+const getIngredientsList = (pizza) => {
+  return pizza.ingredients
+    ? pizza.ingredients.map((i) => i.name).join(", ")
+    : "";
+};
 </script>
 
 <style lang="scss" scoped>

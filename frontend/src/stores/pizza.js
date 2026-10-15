@@ -73,7 +73,7 @@ export const usePizzaStore = defineStore("pizza", {
     },
     incrementIngredientQuantity(ingredientId) {
       const ingredientIdx = this.ingredients.findIndex(
-        (item) => item.ingredientId === ingredientId
+        (item) => item.ingredientId === ingredientId,
       );
 
       if (ingredientIdx === -1) {
@@ -85,7 +85,7 @@ export const usePizzaStore = defineStore("pizza", {
     },
     setIngredientQuantity(ingredientId, count) {
       const ingredientIdx = this.ingredients.findIndex(
-        (item) => item.ingredientId === ingredientId
+        (item) => item.ingredientId === ingredientId,
       );
 
       if (ingredientIdx === -1 && count > 0) {
