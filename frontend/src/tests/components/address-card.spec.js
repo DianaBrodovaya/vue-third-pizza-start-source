@@ -44,4 +44,22 @@ describe("Test AddressCard snapshots", () => {
 
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  // 3. Отрицательный снепшот-тест: проверка, что компонент AddressEditForm не рендерится в режиме просмотра
+  it("Should NOT render address-edit-form in display mode", () => {
+    const wrapper = mount(AddressCard, {
+      props: {
+        address: mockAddress,
+        index: 1,
+      },
+      global: {
+        stubs: {
+          AddressEditForm: true,
+        },
+      },
+    });
+
+    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.html()).not.toContain("address-edit-form");
+  });
 });
